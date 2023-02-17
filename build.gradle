@@ -33,6 +33,12 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    //swagger
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+    //external libs
+    implementation fileTree(dir: 'libs', include: '*.jar')
+
 //    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
 //    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
