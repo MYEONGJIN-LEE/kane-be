@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author kane
- * Https와 Http(1.1)를 동시에 쓰기위한 설정
+ * @apiNote Https와 Http(1.1)를 동시에 쓰기위한 설정
  */
 @Configuration
 public class TomcatTwoConnectors {

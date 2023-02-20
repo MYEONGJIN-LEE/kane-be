@@ -19,9 +19,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    // hateoas
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas:3.0.2'
+
+    //aop
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
 
     // redis
 //    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
@@ -33,11 +40,18 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    //swagger
+    // swagger
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
 
-    //external libs
+    // external libs
     implementation fileTree(dir: 'libs', include: '*.jar')
+
+    // use jquery for static resources
+    implementation group: 'org.webjars.bower', name: 'jquery', version: '3.6.2'
+
+    // Find the version when use webjar.
+    implementation group: 'org.webjars', name: 'webjars-locator-core', version: '0.52'
+
 
 //    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 //    implementation 'org.springframework.boot:spring-boot-starter-security'

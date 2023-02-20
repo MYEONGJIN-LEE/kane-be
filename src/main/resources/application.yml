@@ -3,7 +3,7 @@ server:
   ssl:
     key-store: keystore.p12
     key-store-type: PKCS12
-    key-store-password:
+    key-store-password: 123456
     key-alias: spring
   port: 8443
 
@@ -18,3 +18,9 @@ logging:
 #    redis.clients: TRACE
     com.zaxxer.hikari.HikariConfig: DEBUG
     com.zaxxer.hikari: TRACE
+
+
+### change Static path
+#spring:
+#  mvc:
+#    static-path-pattern: /static/**

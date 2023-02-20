@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationListener;
 
 /**
  * @author kane
- * ApplicationStartingEvent 는 ApplicationContext가 만들어지기전 event이므로
+ * @apiNote ApplicationStartingEvent 는 ApplicationContext가 만들어지기전 event이므로
  * listener가 제대로 동작하지 않음
  * 따라서 bean으로 등록하지 않고 KaneBeApplication에서 listener를 등록하여 사용
  */
