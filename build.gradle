@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.2'
     id 'io.spring.dependency-management' version '1.1.0'
+    id "org.flywaydb.flyway" version "6.5.5"
 }
 
 group = 'com.kane'
@@ -27,11 +28,21 @@ dependencies {
     // hateoas
     implementation 'org.springframework.boot:spring-boot-starter-hateoas:3.0.2'
 
-    //aop
+    // aop
     implementation 'org.springframework.boot:spring-boot-starter-aop'
 
+    // db
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.1'
+    runtimeOnly  'org.mariadb.jdbc:mariadb-java-client:2.7.3'
+
+    // flyway
+    implementation 'org.flywaydb:flyway-core'
+    implementation group: 'org.flywaydb.flyway-test-extensions', name: 'flyway-spring-test', version: '6.0.0'
+    implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '9.15.0'
+
     // redis
-//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
     // local cache
 //    implementation 'com.github.ben-manes.caffeine:caffeine'

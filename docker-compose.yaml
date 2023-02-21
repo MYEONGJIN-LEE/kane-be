@@ -1,0 +1,31 @@
+# Use root as user credentials
+version: "3.1"
+
+services:
+  mysql:
+    image: mysql:8.0.23
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: localmysql1234
+      TZ: Asia/Seoul
+    ports:
+      - 3306:3306
+    platform: linux/x86_64
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --lower_case_table_names=0  --default-time-zone="+09:00"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8081
+
+  redis:
+    image: redis:5.0.6
+    restart: always
+    ports:
+      - 6379:6379
+
+networks:
+  default:
+    external:
+      name: mysql

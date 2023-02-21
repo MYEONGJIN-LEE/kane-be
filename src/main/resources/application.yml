@@ -24,3 +24,48 @@ logging:
 #spring:
 #  mvc:
 #    static-path-pattern: /static/**
+
+
+## Database Master Slave 구성시.
+#spring:
+#  flyway:
+#    locations: classpath:db/migration/common,classpath:db/migration/test
+#    outOfOrder: true
+#  mysql:
+#    datasource:
+#      driver-class-name: org.mariadb.jdbc.Driver
+#      master:
+#        endpoint: 127.0.0.1:3306
+#        username: root
+#        password: localmysql1234
+#        dbname: kanedb
+#        maximum-pool-size: 10
+#        minimum-idle: 10
+#        validation-query: SELECT 1 FROM DUAL
+#      slave:
+#        endpoint: 127.0.0.1:3306
+#        username: root
+#        password: localmysql1234
+#        dbname: kanedb
+#        maximum-pool-size: 10
+#        minimum-idle: 10
+#        validation-query: SELECT 1 FROM DUAL
+
+# Database ( AWS Aurora Mysql을 사용하면 master, slave를 @Transactional(readOnly=true)) 를 통해 분리 )
+spring:
+  datasource:
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/kanedb?useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: localmysql1234
+  flyway:
+    url: jdbc:mariadb://127.0.0.1:3306/kanedb?useUnicode=yes&characterEncoding=UTF-8&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+    schemas: kanedb
+    user: root
+    password: localmysql1234
+    locations: classpath:db/migration/common,classpath:db/migration/test
+    out-of-order: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    session-ttl: 1800
