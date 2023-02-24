@@ -10,6 +10,11 @@ import org.springframework.web.client.RestTemplate;
 import java.nio.charset.Charset;
 import java.time.Duration;
 
+/**
+ * @author kane
+ * @apiNote api 호출 시 사용 함
+ * TODO : feign으로 변경할 것
+ */
 //@Configuration
 //public class RestTemplateConfig {
 //    @Bean

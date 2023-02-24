@@ -33,7 +33,7 @@ dependencies {
 
     // db
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.1'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
     runtimeOnly  'org.mariadb.jdbc:mariadb-java-client:2.7.3'
 
     // flyway
@@ -63,16 +63,21 @@ dependencies {
     // Find the version when use webjar.
     implementation group: 'org.webjars', name: 'webjars-locator-core', version: '0.52'
 
+    // pagination helper
+    implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.4.6'
 
-//    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    // http client for rest templates
+//    implementation 'org.apache.httpcomponents:httpclient:4.5.9'
+
+
+    // security
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
-//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-//    implementation 'org.flywaydb:flyway-core'
+//    testImplementation 'org.springframework.security:spring-security-test'
+
 //    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
 //    implementation 'org.springframework.session:spring-session-core'
-//    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-//    runtimeOnly 'org.postgresql:postgresql'
-//    testImplementation 'org.springframework.security:spring-security-test'
+//
 }
 
 tasks.named('test') {

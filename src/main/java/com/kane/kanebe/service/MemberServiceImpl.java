@@ -2,31 +2,35 @@ package com.kane.kanebe.service;
 
 import com.buildcenter.common.exception.CommonException;
 import com.kane.kanebe.model.member.MemberVO;
+import com.kane.kanebe.model.pagination.PaginationRequestVO;
+import com.kane.kanebe.model.pagination.PaginationResponseVO;
+import com.kane.kanebe.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Service("SampleService")
+@Service("MemberService")
+@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
+
+    private final MemberRepository memberRepository;
+
     public List<MemberVO> retrieveMembers() throws CommonException {
-        MemberVO member_1 = MemberVO.builder().memberName("sample").emailAddress("sample@sample.com").build();
-        MemberVO member_2 = MemberVO.builder().memberName("kane").emailAddress("kane@kane.com").build();
 
-        List<MemberVO> list = new ArrayList<MemberVO>();
-        list.add(member_1);
-        list.add(member_2);
-
-        return list;
+        List<MemberVO> members = memberRepository.retrieveMembers();
+        return members;
     }
 
     public MemberVO retrieveMemberById(Integer id) throws CommonException {
-        MemberVO member_1 = MemberVO.builder().memberName("sample").emailAddress("sample@sample.com").memberId(id).build();
-        return member_1;
+
+        MemberVO member = memberRepository.retrieveMemberById(id);
+        return member;
     }
 
     public MemberVO saveMember(MemberVO memberVO) throws CommonException {
-        memberVO.setMemberId(1);
+
+        memberRepository.saveMember(memberVO);
         return memberVO;
     }
 }

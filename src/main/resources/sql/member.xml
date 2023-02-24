@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.kane.kanebe.repository.MemberRepository">
+    <select id="retrieveMembers" resultType="com.kane.kanebe.model.member.MemberVO">
+        SELECT member_id
+             , member_uuid
+             , member_name
+             , email_address
+             , nickname
+             , introduce
+             , sns_url
+             , phone_number
+             , profile_url
+             , level_id
+             , member_state_code
+             , role_type_code
+             , black_member_yn
+             , black_member_updated_datetime
+             , last_login_datetime
+             , created_datetime
+             , create_member_id
+             , updated_datetime
+             , update_member_id
+        FROM members
+        WHERE 1 = 1
+    </select>
+
+    <select id="retrieveMemberById" parameterType="Integer" resultType="com.kane.kanebe.model.member.MemberVO">
+        SELECT member_id
+             , member_uuid
+             , member_name
+             , email_address
+             , nickname
+             , introduce
+             , sns_url
+             , phone_number
+             , profile_url
+             , level_id
+             , member_state_code
+             , role_type_code
+             , black_member_yn
+             , black_member_updated_datetime
+             , last_login_datetime
+             , created_datetime
+             , create_member_id
+             , updated_datetime
+             , update_member_id
+        FROM members
+        WHERE member_id = #{id}
+    </select>
+
+    <insert id="saveMember" parameterType="com.kane.kanebe.model.member.MemberVO" useGeneratedKeys="true"
+            keyProperty="memberId">
+        INSERT INTO members( member_uuid
+                           , member_name
+                           , email_address
+                           , nickname
+                           , introduce
+                           , sns_url
+                           , phone_number
+                           , profile_url
+                           , created_datetime
+                           , create_member_id
+                           , updated_datetime
+                           , update_member_id)
+        VALUES ( #{memberUuid}
+               , #{memberName}
+               , #{emailAddress}
+               , #{nickname}
+               , #{introduce}
+               , #{snsUrl}
+               , #{phoneNumber}
+               , #{profileUrl}
+               , NOW()
+               , -1
+               , NOW()
+               , -1);
+    </insert>
+</mapper>

@@ -1,9 +1,13 @@
 package com.kane.kanebe.model.member;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.kane.kanebe.annotation.Nickname;
+import com.kane.kanebe.annotation.PhoneNumber;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Data
 @Builder
@@ -14,9 +18,19 @@ public class MemberVO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String memberUuid;
 
+    @NotBlank
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String memberName;
 
+    @Email
+    @NotBlank
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String emailAddress;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String provider;
+
+    @Nickname
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String nickname;
 
@@ -26,26 +40,12 @@ public class MemberVO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String snsUrl;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String emailAddress;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String genderCode;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String ageGroupCode;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String birthYear;
-
+    @PhoneNumber
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String phoneNumber;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String profileUrl;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String profileBackgroundColor;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer levelId;
@@ -81,20 +81,15 @@ public class MemberVO {
     private String lastLoginDatetime;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String lastLogoutDatetime;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String createDatetime;
+    private String createdDatetime;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer createMemberId;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String updateDatetime;
+    private String updatedDatetime;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer updateMemberId;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String createdDateTime;
 }

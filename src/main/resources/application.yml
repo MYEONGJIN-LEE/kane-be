@@ -3,7 +3,7 @@ server:
   ssl:
     key-store: keystore.p12
     key-store-type: PKCS12
-    key-store-password: 123456
+    key-store-password:
     key-alias: spring
   port: 8443
 
@@ -37,7 +37,7 @@ logging:
 #      master:
 #        endpoint: 127.0.0.1:3306
 #        username: root
-#        password: localmysql1234
+#        password:
 #        dbname: kanedb
 #        maximum-pool-size: 10
 #        minimum-idle: 10
@@ -45,11 +45,18 @@ logging:
 #      slave:
 #        endpoint: 127.0.0.1:3306
 #        username: root
-#        password: localmysql1234
+#        password:
 #        dbname: kanedb
 #        maximum-pool-size: 10
 #        minimum-idle: 10
 #        validation-query: SELECT 1 FROM DUAL
+
+#mybatis
+mybatis:
+  type-aliases-package: com.kane.kanebe.repository
+  mapper-locations: classpath:sql/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 # Database ( AWS Aurora Mysql을 사용하면 master, slave를 @Transactional(readOnly=true)) 를 통해 분리 )
 spring:
@@ -57,15 +64,20 @@ spring:
     driverClassName: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://127.0.0.1:3306/kanedb?useUnicode=yes&characterEncoding=UTF-8
     username: root
-    password: localmysql1234
+    password:
   flyway:
     url: jdbc:mariadb://127.0.0.1:3306/kanedb?useUnicode=yes&characterEncoding=UTF-8&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
     schemas: kanedb
     user: root
-    password: localmysql1234
+    password:
     locations: classpath:db/migration/common,classpath:db/migration/test
     out-of-order: true
   redis:
-    host: 127.0.0.1
+    endpoint: localhost
     port: 6379
-    session-ttl: 1800
+    ttl: 28800
+    delete-ttl: 60
+    prefix: kane
+
+pagehelper:
+  reasonable: true
